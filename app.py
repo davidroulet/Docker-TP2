@@ -1,9 +1,11 @@
 from flask import Flask, render_template, request, url_for
 from pymongo import MongoClient
 import socket
+import os
+db_url = os.environ.get('DB_URL')
 
 #Mongo Settings
-client = MongoClient('172.17.0.2', 27017)
+client = MongoClient(db_url, 27017)
 db = client.test_database
 collection = db.test_collection
 posts = db.posts
